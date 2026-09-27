@@ -1,0 +1,694 @@
+
+@import url('https://fonts.googleapis.com/css2?family=Fredoka:wght@500;600;700&family=Nunito:wght@400;600;700&display=swap');
+
+
+
+
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    min-height: 100vh;
+    font-family: "Nunito", sans-serif;
+    color: #3d2b3d;
+
+    background:
+        linear-gradient(
+            180deg,
+            #bfe8ff 0%,
+            #dceeff 35%,
+            #ffe1f0 75%,
+            #ffd3e8 100%
+        );
+
+    overflow-x: hidden;
+}
+
+.screen {
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 30px;
+    text-align: center;
+}
+
+
+.screen:not(.active) {
+    display: none;
+}
+
+
+
+.content {
+    max-width: 500px;
+}
+
+.tiny-text {
+    margin-bottom: 15px;
+    font-size: 0.9rem;
+}
+
+h1 {
+    font-size: 3rem;
+    margin-bottom: 15px;
+}
+
+.message {
+    font-size: 1.2rem;
+    line-height: 1.6;
+    margin-bottom: 30px;
+}
+
+.main-button {
+    border: none;
+    border-radius: 999px;
+    padding: 15px 28px;
+
+    font-size: 1rem;
+    font-weight: bold;
+
+    background: white;
+    color: #d64f91;
+
+    cursor: pointer;
+
+    transition: transform 0.2s ease;
+}
+
+.main-button:hover {
+    transform: scale(1.08);
+}
+
+.welcome-kirby {
+    width: 220px;
+    max-width: 70%;
+    height: auto;
+
+    margin-bottom: 20px;
+
+    animation: kirby-float 3s ease-in-out infinite;
+}
+
+@keyframes kirby-float {
+    0%, 100% {
+        transform: translateY(0);
+    }
+
+    50% {
+        transform: translateY(-12px);
+    }
+}
+
+/* -------------------------
+   FLOATING BACKGROUND STARS
+-------------------------- */
+
+.background-stars {
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    overflow: hidden;
+    z-index: 0;
+}
+
+.background-stars span {
+    position: absolute;
+    color: #fff3a6;
+    opacity: 0.75;
+
+    animation: star-float 5s ease-in-out infinite;
+}
+
+.background-stars span:nth-child(1) {
+    top: 12%;
+    left: 10%;
+    font-size: 28px;
+}
+
+.background-stars span:nth-child(2) {
+    top: 22%;
+    right: 12%;
+    font-size: 18px;
+    animation-delay: 1s;
+}
+
+.background-stars span:nth-child(3) {
+    top: 65%;
+    left: 16%;
+    font-size: 20px;
+    animation-delay: 2s;
+}
+
+.background-stars span:nth-child(4) {
+    top: 72%;
+    right: 18%;
+    font-size: 32px;
+    animation-delay: 0.5s;
+}
+
+.background-stars span:nth-child(5) {
+    top: 42%;
+    left: 6%;
+    font-size: 14px;
+    animation-delay: 1.5s;
+}
+
+.background-stars span:nth-child(6) {
+    top: 45%;
+    right: 7%;
+    font-size: 16px;
+    animation-delay: 2.5s;
+}
+
+.background-stars span:nth-child(7) {
+    top: 8%;
+    left: 28%;
+    font-size: 13px;
+    animation-delay: 0.8s;
+}
+
+.background-stars span:nth-child(8) {
+    top: 15%;
+    right: 30%;
+    font-size: 22px;
+    animation-delay: 2.2s;
+}
+
+.background-stars span:nth-child(9) {
+    top: 33%;
+    left: 20%;
+    font-size: 12px;
+    animation-delay: 1.2s;
+}
+
+.background-stars span:nth-child(10) {
+    top: 36%;
+    right: 22%;
+    font-size: 25px;
+    animation-delay: 3s;
+}
+
+.background-stars span:nth-child(11) {
+    top: 56%;
+    left: 10%;
+    font-size: 16px;
+    animation-delay: 0.3s;
+}
+
+.background-stars span:nth-child(12) {
+    top: 58%;
+    right: 11%;
+    font-size: 13px;
+    animation-delay: 1.8s;
+}
+
+.background-stars span:nth-child(13) {
+    top: 82%;
+    left: 28%;
+    font-size: 23px;
+    animation-delay: 2.6s;
+}
+
+.background-stars span:nth-child(14) {
+    top: 86%;
+    right: 26%;
+    font-size: 15px;
+    animation-delay: 1.4s;
+}
+
+.background-stars span:nth-child(even) {
+    animation-duration: 6.5s;
+}
+
+.background-stars span:nth-child(3n) {
+    animation-duration: 4.5s;
+}
+
+@keyframes star-float {
+    0%, 100% {
+        transform: translateY(0) rotate(0deg);
+    }
+
+    50% {
+        transform: translateY(-10px) rotate(12deg);
+    }
+}
+
+
+/* Keep our actual content above the stars */
+
+.page {
+    position: relative;
+    z-index: 1;
+    min-height: 100vh;
+}
+
+/* -------------------------
+   DREAM LAND CLOUDS
+-------------------------- */
+
+.clouds {
+    position: fixed;
+    inset: 0;
+    overflow: hidden;
+    pointer-events: none;
+    z-index: 0;
+}
+
+.cloud {
+    position: absolute;
+
+    width: 150px;
+    height: 45px;
+
+    background: rgba(255, 255, 255, 0.72);
+
+    border-radius: 50px;
+
+    animation: cloud-drift 18s ease-in-out infinite alternate;
+}
+
+/* Cloud puffs */
+
+.cloud::before,
+.cloud::after {
+    content: "";
+    position: absolute;
+
+    background: inherit;
+    border-radius: 50%;
+}
+
+.cloud::before {
+    width: 65px;
+    height: 65px;
+
+    left: 25px;
+    top: -30px;
+}
+
+.cloud::after {
+    width: 85px;
+    height: 85px;
+
+    right: 20px;
+    top: -45px;
+}
+
+
+/* Individual clouds */
+
+.cloud-one {
+    top: 18%;
+    left: -30px;
+
+    transform: scale(0.8);
+}
+
+.cloud-two {
+    top: 34%;
+    right: -40px;
+
+    transform: scale(0.55);
+
+    opacity: 0.65;
+
+    animation-duration: 23s;
+}
+
+.cloud-three {
+    top: 68%;
+    left: 8%;
+
+    transform: scale(0.45);
+
+    opacity: 0.55;
+
+    animation-duration: 20s;
+}
+
+.cloud-four {
+    top: 78%;
+    right: 5%;
+
+    transform: scale(0.7);
+
+    opacity: 0.6;
+
+    animation-duration: 25s;
+}
+
+
+/* Gentle cloud movement */
+
+@keyframes cloud-drift {
+    from {
+        margin-left: -20px;
+    }
+
+    to {
+        margin-left: 40px;
+    }
+}
+
+.together-image {
+    width: 320px;
+    max-width: 85%;
+    height: auto;
+
+    margin: 20px 0 25px;
+
+    border: 6px solid rgba(255, 255, 255, 0.8);
+    border-radius: 24px;
+
+    box-shadow: 0 10px 30px rgba(107, 68, 105, 0.18);
+}
+
+h2 {
+    font-size: 2rem;
+    margin-bottom: 15px;
+}
+
+
+/* -------------------------
+   THE QUESTION 💗
+-------------------------- */
+
+.question-content {
+    max-width: 600px;
+}
+
+.heart-kirby {
+    width: 230px;
+    max-width: 65%;
+    height: auto;
+
+    margin: 5px 0 15px;
+
+    animation: heart-kirby-float 2.8s ease-in-out infinite;
+}
+
+@keyframes heart-kirby-float {
+    0%, 100% {
+        transform: translateY(0);
+    }
+
+    50% {
+        transform: translateY(-8px);
+    }
+}
+
+.big-question {
+    font-size: 2.5rem;
+    line-height: 1.15;
+    margin-bottom: 10px;
+}
+
+.choose-text {
+    font-size: 0.95rem;
+    opacity: 0.7;
+    margin-bottom: 25px;
+}
+
+.answer-buttons {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 12px;
+    flex-wrap: wrap;
+}
+
+.answer-button {
+    border: none;
+    border-radius: 999px;
+
+    padding: 14px 22px;
+
+    background: white;
+    color: #d64f91;
+
+    font-size: 0.95rem;
+    font-weight: bold;
+
+    cursor: pointer;
+
+    box-shadow: 0 6px 18px rgba(107, 68, 105, 0.12);
+
+    transition:
+        transform 0.2s ease,
+        box-shadow 0.2s ease;
+}
+
+.answer-button:hover {
+    transform: translateY(-3px) scale(1.05);
+
+    box-shadow: 0 9px 22px rgba(107, 68, 105, 0.18);
+}
+
+/* -------------------------
+   CELEBRATION 🎉
+-------------------------- */
+
+.celebration-content {
+    max-width: 600px;
+}
+
+.celebration-kirby {
+    width: 400px;
+    max-width: 90%;
+    height: auto;
+
+    margin: 15px 0 20px;
+
+}
+
+.celebration-title {
+    font-size: 2.8rem;
+    margin-bottom: 12px;
+}
+
+.answer-reaction {
+    font-size: 1.2rem;
+    font-weight: bold;
+
+    color: #d64f91;
+
+    margin-bottom: 22px;
+}
+
+.final-message {
+    font-size: 1.25rem;
+    line-height: 1.5;
+
+    margin-bottom: 22px;
+}
+
+.boyfriend-status {
+    display: inline-block;
+
+    padding: 12px 20px;
+
+    background: rgba(255, 255, 255, 0.65);
+
+    border-radius: 999px;
+
+    font-size: 0.95rem;
+    font-weight: bold;
+}
+
+
+/* -------------------------
+   HEART + STAR BURST
+-------------------------- */
+
+.celebration-particle {
+    position: fixed;
+
+    pointer-events: none;
+
+    z-index: 10;
+
+    font-size: 24px;
+
+    animation: particle-burst 1.8s ease-out forwards;
+}
+
+@keyframes particle-burst {
+
+    0% {
+        transform:
+            translate(0, 0)
+            scale(0.5)
+            rotate(0deg);
+
+        opacity: 1;
+    }
+
+    100% {
+        transform:
+            translate(
+                var(--move-x),
+                var(--move-y)
+            )
+            scale(1.4)
+            rotate(180deg);
+
+        opacity: 0;
+    }
+}
+
+/* -------------------------
+   SCREEN TRANSITIONS ✨
+-------------------------- */
+
+.screen.active .content {
+    animation: screen-arrive 0.65s ease both;
+}
+
+@keyframes screen-arrive {
+    from {
+        opacity: 0;
+        transform: translateY(18px) scale(0.98);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+    }
+}
+
+.main-button:active,
+.answer-button:active {
+    transform: scale(0.94);
+}
+
+/* -------------------------
+   MOBILE 📱
+-------------------------- */
+
+@media (max-width: 600px) {
+
+    .screen {
+        padding: 24px 20px;
+    }
+
+    .content {
+        width: 100%;
+    }
+
+    h1 {
+        font-size: 2.5rem;
+    }
+
+    h2 {
+        font-size: 1.7rem;
+    }
+
+    .message {
+        font-size: 1.05rem;
+    }
+
+    .welcome-kirby {
+        width: 190px;
+    }
+
+    .together-image {
+        width: 280px;
+        max-width: 90%;
+    }
+
+    .heart-kirby {
+        width: 190px;
+        max-width: 60%;
+    }
+
+    .big-question {
+        font-size: 2rem;
+    }
+
+    .answer-buttons {
+        flex-direction: column;
+        width: 100%;
+    }
+
+    .answer-button {
+        width: min(100%, 300px);
+        min-height: 50px;
+    }
+
+    .celebration-kirby {
+        width: 320px;
+        max-width: 95%;
+    }
+
+    .celebration-title {
+        font-size: 2.2rem;
+    }
+
+    .answer-reaction {
+        font-size: 1.05rem;
+    }
+
+    .final-message {
+        font-size: 1.1rem;
+    }
+
+    .boyfriend-status {
+        font-size: 0.85rem;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+
+    *,
+    *::before,
+    *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        scroll-behavior: auto !important;
+    }
+}
+
+/* -------------------------
+   TYPOGRAPHY 💗
+-------------------------- */
+
+h1,
+h2,
+.main-button,
+.answer-button,
+.boyfriend-status {
+    font-family: "Fredoka", sans-serif;
+}
+
+h1,
+h2 {
+    font-weight: 600;
+}
+
+.main-button,
+.answer-button {
+    font-weight: 600;
+}
+
+.tiny-text {
+    font-family: "Fredoka", sans-serif;
+    font-weight: 500;
+    letter-spacing: 0.5px;
+}
+
+/* Pixel hearts 💗 */
+
+.pixel-hearts {
+    width: 95px;
+    height: auto;
+    margin-bottom: 8px;
+
+    image-rendering: pixelated;
+}
+

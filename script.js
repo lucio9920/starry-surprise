@@ -38,12 +38,12 @@ answerButtons.forEach(function (button) {
 
         if (answer === "super") {
             answerReaction.textContent =
-                "okayyyy somebody likes me 🙄💗";
+                "okayyyy so you DO like me 🙄💗";
         }
 
         if (answer === "of-course") {
             answerReaction.textContent =
-                "Hell yea 😭💗";
+                "Hell yea 💗";
         }
 
         questionScreen.classList.remove("active");
